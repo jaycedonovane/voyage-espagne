@@ -36,10 +36,10 @@ const JOURS = [
     mois: "NOV", jour: "07",
     date: "Samedi 7 novembre 2026",
     titre: "Hôtel, détente et bonne table",
-    texte: "Une journée plus calme autour de l'hôtel : la boutique, le jardin et la vue sur le terrain de sport. Le soir, un restaurant dont les murs et le plafond sont couverts de messages écrits par les clients, avec boissons fraîches et grillades.",
+    texte: "Une journée plus calme autour de l'hôtel : la boutique, le jardin et la vue sur le terrain de sport. Le soir, direction AHUEVO Lloret, un restaurant dont les murs et le plafond sont couverts de messages écrits par les clients, avec boissons fraîches et grillades.",
     groupes: [
       { id: "hotel",       titre: "Autour de l'hôtel",        de: 63, a: 70 },
-      { id: "restaurant",  titre: "Le restaurant aux murs écrits", de: 71, a: 76 }
+      { id: "restaurant",  titre: "AHUEVO Lloret : le restaurant aux murs écrits", de: 71, a: 76 }
     ]
   },
   {
@@ -47,10 +47,10 @@ const JOURS = [
     nav: "Jour 4",
     mois: "NOV", jour: "08",
     date: "Dimanche 8 novembre 2026",
-    titre: "Tex-Mex et grillades",
-    texte: "Dîner tex-mex dans un décor coloré aux crânes mexicains, passage par l'appartement, puis grand repas dans une salle à nappes blanches : côtes de bœuf et légumes grillés.",
+    titre: "Panxos et grillades",
+    texte: "Dîner tex-mex chez Panxos, dans un décor coloré aux crânes mexicains, passage par l'appartement, puis grand repas dans une salle à nappes blanches : côtes de bœuf et légumes grillés.",
     groupes: [
-      { id: "panxos",      titre: "Le tex-mex",      de: 77, a: 85 },
+      { id: "panxos",      titre: "Panxos : le tex-mex", de: 77, a: 85 },
       { id: "appartement", titre: "L'appartement",   de: 86, a: 87 },
       { id: "grillades",   titre: "Les grillades",   de: 88, a: 93 }
     ]
@@ -76,7 +76,7 @@ const FAVORIS = [
   { n: 51, titre: "Les vagues contre les rochers" },
   { n: 46, titre: "Vue sur la baie" },
   { n: 60, titre: "Le chemin dans la nature" },
-  { n: 81, titre: "Ambiance de bar" }
+  { n: 81, titre: "Au bar du Panxos" }
 ];
 
 // Nuage de mots-clés : "poids" de 1 (petit) à 5 (gros), "cible" = id d'un jour ou d'un groupe.
@@ -90,8 +90,9 @@ const TAGS = [
   { label: "Nuit",         cible: "nuit",           poids: 4 },
   { label: "Panorama",     cible: "vues-bcn",       poids: 3 },
   { label: "Ruelles",      cible: "lloret-rues",    poids: 3 },
-  { label: "Tex-Mex",      cible: "panxos",         poids: 3 },
-  { label: "Resto",        cible: "restaurant",     poids: 2 },
+  { label: "Panxos",       cible: "panxos",         poids: 3 },
+  { label: "AHUEVO",       cible: "restaurant",     poids: 3 },
+  { label: "Tex-Mex",      cible: "panxos",         poids: 2 },
   { label: "Hôtel",        cible: "hotel",          poids: 2 },
   { label: "Grillades",    cible: "grillades",      poids: 2 },
   { label: "Arc de Triomphe", cible: "arc",         poids: 1 }
