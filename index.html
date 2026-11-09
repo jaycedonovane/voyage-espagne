@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Espagne 2026 - Carnet de voyage</title>
-    <meta name="description" content="Carnet de voyage en Espagne, du 5 au 9 novembre 2026 : Barcelone, Lloret de Mar, plages, ruelles et bonne table en 75 photos.">
-    <meta property="og:title" content="Espagne 2026 - Carnet de voyage">
-    <meta property="og:description" content="Barcelone, Lloret de Mar, plages, ruelles et bonne table : 75 photos du 5 au 9 novembre 2026.">
+    <meta name="description" content="Carnet de voyage en Espagne, du 5 au 9 novembre 2026 : festival La Clave à Lloret de Mar, Barcelone, plages, ruelles et bonne table en 75 photos et 3 vidéos.">
+    <meta property="og:title" content="Espagne 2026 - Festival La Clave, comme si vous y étiez">
+    <meta property="og:description" content="Toi et moi, nous partons vers la lune ! Festival La Clave à Lloret de Mar : vidéos et 75 photos du 5 au 9 novembre 2026.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/img/full/espagne-031.jpg">
     <meta name="theme-color" content="#ffc93c">
@@ -25,7 +25,8 @@
     <div class="intro-carte">
         <div class="soleil" aria-hidden="true"></div>
         <h2 id="intro-titre">&iexcl;Hola Espa&ntilde;a!</h2>
-        <p>Cinq jours, 75 photos, un peu de soleil et de la musique.</p>
+        <p class="intro-slogan">Toi et moi, nous partons vers la lune&nbsp;!</p>
+        <p>Festival La Clave &agrave; Lloret de Mar, 75 photos, des vid&eacute;os et de la musique.</p>
         <button type="button" id="intro-son" class="gros-bouton">&#9834; Entrer avec la musique</button>
         <button type="button" id="intro-muet" class="lien-bouton">Entrer sans le son</button>
     </div>
@@ -43,22 +44,62 @@
 
     <div class="ruban" aria-hidden="true">
         <div class="ruban-piste">
-            <span>&iexcl;HOLA! &#9733; BARCELONE &#9733; LLORET DE MAR &#9733; SOLEIL &#9733; PLAGE &#9733; BONNE TABLE &#9733; </span>
-            <span>&iexcl;HOLA! &#9733; BARCELONE &#9733; LLORET DE MAR &#9733; SOLEIL &#9733; PLAGE &#9733; BONNE TABLE &#9733; </span>
+            <span>&iexcl;HOLA! &#9733; FESTIVAL LA CLAVE &#9733; BARCELONE &#9733; LLORET DE MAR &#9733; SALSA &#9733; SOLEIL &#9733; PLAGE &#9733; BONNE TABLE &#9733; </span>
+            <span>&iexcl;HOLA! &#9733; FESTIVAL LA CLAVE &#9733; BARCELONE &#9733; LLORET DE MAR &#9733; SALSA &#9733; SOLEIL &#9733; PLAGE &#9733; BONNE TABLE &#9733; </span>
         </div>
     </div>
 
     <nav id="menu" aria-label="Navigation principale">
         <ul id="menu-liste">
-            <li><a href="#accueil" class="actif">Accueil</a></li>
+            <li><a href="#clave" class="actif">&#9835; La Clave</a></li>
+            <li><a href="#accueil">Accueil</a></li>
         </ul>
     </nav>
 
     <div id="corps">
         <main id="contenu">
+            <!-- À LA UNE : le festival -->
+            <section id="clave" class="clave" aria-labelledby="clave-titre">
+                <div class="clave-alune" aria-hidden="true">&Agrave; la une</div>
+                <p class="clave-lieu">Lloret de Mar &middot; novembre 2026</p>
+                <h2 id="clave-titre">Festival <span>La Clave</span></h2>
+                <p class="clave-slogan">Toi et moi, nous partons vers la lune&nbsp;!</p>
+                <p class="clave-sous">Festival La Clave, comme si vous y &eacute;tiez.</p>
+                <p class="clave-texte">Le grand moment du voyage : le festival <strong>La Clave</strong> de Lloret de Mar. Pour moi, <strong>Yoandy Villaurutia</strong> est le meilleur danseur de salsa sociale du moment, et le voir danser en vrai, c'&eacute;tait incroyable. Mets le son et regarde&nbsp;!</p>
+                <ul class="clave-videos">
+                    <li>
+                        <figure>
+                            <video controls playsinline preload="metadata" poster="assets/video/clave-1-poster.jpg" width="720" height="888">
+                                <source src="assets/video/clave-1.mp4" type="video/mp4">
+                                Ta navigation ne sait pas lire cette vid&eacute;o.
+                            </video>
+                            <figcaption>Dans la salle &middot; soir&eacute;e du 6 novembre</figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <video controls playsinline preload="metadata" poster="assets/video/clave-2-poster.jpg" width="720" height="1180">
+                                <source src="assets/video/clave-2.mp4" type="video/mp4">
+                                Ta navigation ne sait pas lire cette vid&eacute;o.
+                            </video>
+                            <figcaption>Sur sc&egrave;ne &middot; 7 novembre</figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <video controls playsinline preload="metadata" poster="assets/video/clave-3-poster.jpg" width="604" height="694">
+                                <source src="assets/video/clave-3.mp4" type="video/mp4">
+                                Ta navigation ne sait pas lire cette vid&eacute;o.
+                            </video>
+                            <figcaption>Souvenir &middot; capture d'&eacute;cran Instagram</figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </section>
+
             <section id="accueil" class="accueil">
                 <h2>Bienvenue dans mon carnet de voyage</h2>
-                <p>Cinq jours en Espagne : l'arriv&eacute;e &agrave; Barcelone, les premi&egrave;res lueurs sur Lloret de Mar, de bons repas et une derni&egrave;re balade de nuit. Clique sur une photo pour la voir en grand, puis utilise les fl&egrave;ches du clavier ou fais glisser au doigt pour passer &agrave; la suivante.</p>
+                <p>Cinq jours en Espagne pendant le festival <strong>La Clave</strong> de Lloret de Mar : l'arriv&eacute;e &agrave; Barcelone, les premi&egrave;res lueurs sur Lloret de Mar, de bons repas et une derni&egrave;re balade de nuit. Clique sur une photo pour la voir en grand, puis utilise les fl&egrave;ches du clavier ou fais glisser au doigt pour passer &agrave; la suivante.</p>
             </section>
             <div id="jours"></div>
             <noscript><p class="avertissement">Ce site a besoin de JavaScript pour afficher les photos.</p></noscript>
@@ -70,6 +111,7 @@
                 <dl class="infos">
                     <dt>Dates</dt><dd>5 au 9 novembre 2026</dd>
                     <dt>&Eacute;tapes</dt><dd>Barcelone &amp; Lloret de Mar</dd>
+                    <dt>Festival</dt><dd>La Clave</dd>
                     <dt>Photos</dt><dd id="nb-photos">75</dd>
                 </dl>
             </section>
@@ -112,7 +154,7 @@
         <path class="barre" d="M4 4l16 16" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
     </svg>
 </button>
-<audio id="musique" src="assets/audio/musique-espagne.mp3" loop preload="none"></audio>
+<audio id="musique" src="assets/audio/musique-accueil.mp3" preload="none"></audio>
 
 <!-- Visionneuse de photos (zoom plein écran) -->
 <div id="visionneuse" class="cachee" role="dialog" aria-modal="true" aria-label="Visionneuse de photos">

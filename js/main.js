@@ -132,7 +132,7 @@
             },
             { rootMargin: "-20% 0px -70% 0px" }
         );
-        document.querySelectorAll("#accueil, #coups-de-coeur, .jour").forEach((s) => observateur.observe(s));
+        document.querySelectorAll("#clave, #accueil, #coups-de-coeur, .jour").forEach((s) => observateur.observe(s));
     }
 
     // ==========================================================
@@ -398,6 +398,9 @@
         const VOLUME = 0.22;        // discret : de la musique de fond, pas trop forte
         const FONDU_MS = 2500;
 
+        const PISTES = ["assets/audio/musique-accueil.mp3", "assets/audio/musique-espagne.mp3"];
+        let piste = 0;
+        let suspendue = false;      // musique mise en pause le temps d'une vidéo
         let voulue = false;         // le visiteur veut-il la musique ?
         let minuterie = 0;
         let gain = null;            // iPhone : audio.volume est ignoré, on passe par Web Audio
@@ -448,7 +451,10 @@
             fondu(0, VOLUME);
             const promesse = audio.play();
             if (promesse && promesse.catch) {
-                promesse.catch(() => { voulue = false; clearInterval(minuterie); afficherEtat(); });
+                promesse.catch((err) => {
+                    if (err && err.name === "AbortError") return;   // lecture simplement interrompue par une pause
+                    voulue = false; clearInterval(minuterie); afficherEtat();
+                });
             }
             afficherEtat();
         }
@@ -459,9 +465,40 @@
             afficherEtat();
         }
 
-        bouton.addEventListener("click", () => { if (voulue && !audio.paused) couper(); else lancer(); });
-        audio.addEventListener("pause", afficherEtat);
+        bouton.addEventListener("click", () => {
+            suspendue = false;
+            if (voulue && !audio.paused) couper(); else lancer();
+        });
+        audio.addEventListener("pause", () => { if (!audio.ended) afficherEtat(); });
         audio.addEventListener("play", afficherEtat);
+
+        // liste de lecture : la nouvelle musique d'abord, puis l'autre, en boucle
+        audio.addEventListener("ended", () => {
+            piste = (piste + 1) % PISTES.length;
+            audio.src = PISTES[piste];
+            if (voulue) audio.play().catch((err) => { if (!err || err.name !== "AbortError") { voulue = false; afficherEtat(); } });
+        });
+
+        // quand on lance une vidéo, la musique de fond se met en pause puis reprend après
+        const volumeActuel = () => (volumeReglable ? audio.volume : VOLUME);
+        document.addEventListener("play", (e) => {
+            const v = e.target;
+            if (!v || v.tagName !== "VIDEO") return;
+            document.querySelectorAll("video").forEach((autre) => { if (autre !== v && !autre.paused) autre.pause(); });
+            if (voulue && !audio.paused) {
+                suspendue = true;
+                fondu(volumeActuel(), 0, () => audio.pause());
+            }
+        }, true);
+        function videoFinie(e) {
+            if (!e.target || e.target.tagName !== "VIDEO") return;
+            const encore = [...document.querySelectorAll("video")].some((x) => !x.paused && !x.ended);
+            if (encore || !suspendue) return;
+            suspendue = false;
+            if (voulue) { reglerVolume(0); fondu(0, VOLUME); audio.play().catch(() => {}); }
+        }
+        document.addEventListener("pause", videoFinie, true);
+        document.addEventListener("ended", videoFinie, true);
 
         // pas de musique dans un onglet en arrière-plan
         let etaitEnLecture = false;

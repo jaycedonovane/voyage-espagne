@@ -12,8 +12,14 @@ avec visionneuse plein écran façon Lightbox.
 
 ## Musique
 
-Un écran d'accueil propose "Entrer avec la musique" ou "Entrer sans le son" (les navigateurs interdisent le son automatique : il faut un clic). La musique démarre en fondu, reste discrète (volume 22 %), tourne en boucle et se coupe ou se relance avec le bouton rond en bas à droite. Elle se met en pause quand l'onglet passe en arrière-plan.
-Fichier : `assets/audio/musique-espagne.mp3`.
+Un écran d'accueil propose "Entrer avec la musique" ou "Entrer sans le son" (les navigateurs interdisent le son automatique : il faut un clic). La musique démarre en fondu, reste discrète (volume 22 %) et se coupe ou se relance avec le bouton rond en bas à droite. Elle se met en pause quand l'onglet passe en arrière-plan.
+Liste de lecture en boucle : `assets/audio/musique-accueil.mp3` d'abord (la nouvelle musique), puis `assets/audio/musique-espagne.mp3` (liste `PISTES` dans `js/main.js`).
+Quand on lance une vidéo, la musique de fond se met en pause toute seule et reprend quand la vidéo s'arrête.
+
+## Festival La Clave (à la une)
+
+La section tout en haut de la page (`#clave` dans `index.html`) présente le festival La Clave de Lloret de Mar et 3 vidéos (`assets/video/clave-1/2/3.mp4`, converties en H.264 pour tous les navigateurs, avec une image d'aperçu `-poster.jpg`). Les vidéos d'origine restent dans `_sources/videos-originales/`.
+Slogan : "Toi et moi, nous partons vers la lune !"
 
 ## Mobile first
 
@@ -39,7 +45,8 @@ Double-clic sur `index.html`. Aucun serveur nécessaire.
 - `assets/img/full/` : photos web (1800 px)
 - `assets/img/thumb/` : miniatures (520 px)
 - `assets/img/medium/` : versions 900 px des 6 coups de coeur
-- `assets/audio/` : la musique d'ambiance
+- `assets/video/` : les 3 vidéos du festival et leurs images d'aperçu
+- `assets/audio/` : les 2 musiques d'ambiance
 - `assets/fonts/` : polices Fredoka, Permanent Marker et Caveat (licence OFL, hébergées dans le projet)
 - `_sources/originaux/` : photos d'origine 4000x3000 rangées par jour (restent sur le PC, ignorées par Git)
 - `_sources/apercu/` : planche de vignettes de contrôle (ignorée par Git)

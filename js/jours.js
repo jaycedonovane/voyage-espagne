@@ -81,6 +81,8 @@ const FAVORIS = [
 
 // Nuage de mots-clés : "poids" de 1 (petit) à 5 (gros), "cible" = id d'un jour ou d'un groupe.
 const TAGS = [
+  { label: "La Clave",     cible: "clave",          poids: 5 },
+  { label: "Salsa",        cible: "clave",          poids: 4 },
   { label: "Barcelone",    cible: "jour1",          poids: 5 },
   { label: "Lloret de Mar", cible: "jour2",         poids: 5 },
   { label: "Coups de cœur", cible: "coups-de-coeur", poids: 4 },

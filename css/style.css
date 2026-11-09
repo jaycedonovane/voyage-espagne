@@ -260,6 +260,72 @@ h2 { background: linear-gradient(transparent 62%, rgba(255, 201, 60, .85) 62%); 
 .accueil h2 { display: block; background: none; margin-bottom: .3rem; }
 .accueil p { margin: 0; }
 
+/* ---------- À LA UNE : le festival La Clave ---------- */
+.clave {
+    position: relative;
+    margin: 6px 0 24px; padding: 30px 14px 22px;
+    text-align: center; color: #fff;
+    background:
+        repeating-conic-gradient(from 0deg at 50% -10%, rgba(255, 255, 255, .16) 0 8deg, transparent 8deg 16deg),
+        linear-gradient(160deg, var(--tomate), var(--orange) 55%, var(--soleil));
+    border: 4px solid var(--encre); border-radius: 20px;
+    box-shadow: 7px 7px 0 var(--encre);
+    transform: rotate(-.5deg);
+}
+.clave-alune {
+    position: absolute; top: -16px; right: 14px; z-index: 2;
+    padding: 4px 16px; font: 400 1.1rem/1.3 var(--titre);
+    color: var(--soleil); background: var(--encre);
+    border: 3px solid var(--soleil); border-radius: 999px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, .35);
+    transform: rotate(5deg);
+}
+.clave-lieu {
+    margin: 0; font-size: .8rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--encre);
+}
+.clave h2 {
+    display: block; background: none; margin: .25rem 0 .1rem;
+    font: 400 clamp(2.3rem, 12vw, 4.4rem)/1.05 var(--titre);
+    color: #fff;
+    -webkit-text-stroke: 7px var(--encre); paint-order: stroke fill;
+    text-shadow: 4px 4px 0 var(--encre);
+}
+.clave h2 span { color: var(--soleil); }
+.clave-slogan {
+    display: inline-block; margin: .5rem auto .2rem; padding: 4px 18px;
+    font: 600 clamp(1.4rem, 6.2vw, 2rem)/1.15 var(--main);
+    color: var(--encre); background: #fff3b0;
+    border: 3px solid var(--encre); border-radius: 12px;
+    box-shadow: 4px 4px 0 var(--encre);
+    transform: rotate(-1.5deg);
+}
+.clave-sous { margin: 12px 0 0; font-size: 1.1rem; font-weight: 700; text-shadow: 2px 2px 0 var(--encre); }
+.clave-texte {
+    max-width: 62ch; margin: 16px auto 0; padding: 12px 16px;
+    text-align: left; color: var(--encre); background: #fff;
+    border: 3px solid var(--encre); border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--encre);
+}
+.clave-videos {
+    list-style: none; margin: 24px 0 0; padding: 0;
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start;
+}
+.clave-videos figure {
+    margin: 0; padding: 8px 8px 0; overflow: hidden;
+    background: #fff; border: 4px solid var(--encre); border-radius: 14px;
+    box-shadow: 5px 5px 0 var(--encre);
+}
+.clave-videos li:nth-child(odd) figure { transform: rotate(.8deg); }
+.clave-videos li:nth-child(even) figure { transform: rotate(-.8deg); }
+.clave-videos video {
+    display: block; width: 100%; height: auto; max-height: 80vh;
+    background: #000; border-radius: 6px; object-fit: contain;
+}
+.clave-videos figcaption { padding: 8px 6px 10px; font-size: .92rem; font-weight: 700; color: var(--encre); text-align: left; }
+
+.intro-slogan { margin: 0 0 6px !important; font: 600 1.55rem/1.15 var(--main); color: var(--tomate); }
+
 /* ---------- Sections jour ---------- */
 #jours > .jour:nth-child(5n+1) { --c: var(--tomate); }
 #jours > .jour:nth-child(5n+2) { --c: var(--mer); }
@@ -609,6 +675,11 @@ h2 { background: linear-gradient(transparent 62%, rgba(255, 201, 60, .85) 62%); 
 
     .galerie { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 24px 18px; }
     .galerie a { padding: 6px 6px 22px; }
+
+    .clave { padding: 36px 28px 30px; margin-bottom: 30px; }
+    .clave-lieu { font-size: .95rem; }
+    .clave-videos { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .clave-videos video { max-height: none; }
 
     .coeur { padding: 4px 24px 26px; }
     .mosaique { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 18px; }
