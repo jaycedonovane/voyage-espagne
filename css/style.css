@@ -324,7 +324,7 @@ h2 { background: linear-gradient(transparent 62%, rgba(255, 201, 60, .85) 62%); 
 }
 .clave-videos figcaption { padding: 8px 6px 10px; font-size: .92rem; font-weight: 700; color: var(--encre); text-align: left; }
 
-.intro-slogan { margin: 0 0 6px !important; font: 600 1.55rem/1.15 var(--main); color: var(--tomate); }
+.intro-carte .intro-slogan { margin: 0 0 8px; font: 600 clamp(1.6rem, 7.5vw, 2.1rem)/1.1 var(--main); color: var(--tomate); }
 
 /* ---------- Sections jour ---------- */
 #jours > .jour:nth-child(5n+1) { --c: var(--tomate); }
