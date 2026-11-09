@@ -1,7 +1,7 @@
 # Espagne 2026 - Carnet de voyage
 
-Site de voyage en HTML, CSS et JavaScript, sans framework, dans un style "Web 2.0" de 2007
-(dégradés brillants, onglets, pastille "Nouveau !", visionneuse façon Lightbox).
+Site de voyage en HTML, CSS et JavaScript, sans framework, dans un style "carnet scrapbook" fun (polaroids scotchés, post-it, autocollants, ticker)
+avec visionneuse plein écran façon Lightbox.
 75 photos, du 5 au 9 novembre 2026 (27 photos ecartees, leurs originaux restent dans `_sources`).
 
 ## Fonctionnement des photos
@@ -9,6 +9,11 @@ Site de voyage en HTML, CSS et JavaScript, sans framework, dans un style "Web 2.
 - Un clic ou un toucher sur une miniature la fait grandir en plein écran, avec une pluie de confettis.
 - Les confettis ne partent qu'à l'ouverture : pas quand on passe d'une photo à l'autre, mais de nouveau si on ferme puis qu'on rouvre une photo.
 - Photo suivante / précédente : flèches à l'écran, touches ← → ↑ ↓ (aussi PageHaut / PageBas, Début / Fin), ou glissement du doigt. Échap ferme.
+
+## Musique
+
+Un écran d'accueil propose "Entrer avec la musique" ou "Entrer sans le son" (les navigateurs interdisent le son automatique : il faut un clic). La musique démarre en fondu, reste discrète (volume 22 %), tourne en boucle et se coupe ou se relance avec le bouton rond en bas à droite. Elle se met en pause quand l'onglet passe en arrière-plan.
+Fichier : `assets/audio/musique-espagne.mp3`.
 
 ## Mobile first
 
@@ -34,6 +39,8 @@ Double-clic sur `index.html`. Aucun serveur nécessaire.
 - `assets/img/full/` : photos web (1800 px)
 - `assets/img/thumb/` : miniatures (520 px)
 - `assets/img/medium/` : versions 900 px des 6 coups de coeur
+- `assets/audio/` : la musique d'ambiance
+- `assets/fonts/` : polices Fredoka, Permanent Marker et Caveat (licence OFL, hébergées dans le projet)
 - `_sources/originaux/` : photos d'origine 4000x3000 rangées par jour (restent sur le PC, ignorées par Git)
 - `_sources/apercu/` : planche de vignettes de contrôle (ignorée par Git)
 

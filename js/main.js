@@ -142,7 +142,7 @@
     const confettis = (function () {
         const canvas = $("#confettis");
         const ctx = canvas.getContext("2d");
-        const COULEURS = ["#ff8a00", "#ffd23f", "#e53935", "#2f86d6", "#6fb6f2", "#ffffff", "#8bc34a", "#f06292"];
+        const COULEURS = ["#ef4b3f", "#ffc93c", "#ff8a30", "#1fb5b0", "#4cc9f0", "#ff7eb6", "#ffffff", "#1d2b53"];
         let anim = 0;
 
         function lancer() {
@@ -386,7 +386,113 @@
         window.addEventListener("orientationchange", () => { if (ouverte()) setTimeout(ajuster, 200); });
     }
 
+    // ==========================================================
+    // Musique d'ambiance + écran d'accueil
+    // Les navigateurs interdisent le son automatique : la musique démarre donc au clic
+    // sur "Entrer avec la musique". Le bouton rond en bas à droite la coupe / la relance.
+    // ==========================================================
+    function musique() {
+        const intro = $("#intro");
+        const audio = $("#musique");
+        const bouton = $("#bouton-musique");
+        const VOLUME = 0.22;        // discret : de la musique de fond, pas trop forte
+        const FONDU_MS = 2500;
+
+        let voulue = false;         // le visiteur veut-il la musique ?
+        let minuterie = 0;
+        let gain = null;            // iPhone : audio.volume est ignoré, on passe par Web Audio
+
+        // sur iPhone / iPad le volume d'un <audio> ne peut pas être réglé par le script
+        const volumeReglable = (() => { const t = new Audio(); t.volume = 0.5; return t.volume === 0.5; })();
+
+        function reglerVolume(v) {
+            if (volumeReglable) { audio.volume = Math.min(1, Math.max(0, v)); return; }
+            if (!gain) {
+                try {
+                    const AC = window.AudioContext || window.webkitAudioContext;
+                    const ctx = new AC();
+                    const source = ctx.createMediaElementSource(audio);
+                    gain = ctx.createGain();
+                    source.connect(gain); gain.connect(ctx.destination);
+                    gain.ctx = ctx;
+                } catch (e) { return; }
+            }
+            if (gain.ctx.state === "suspended") gain.ctx.resume();
+            gain.gain.value = Math.min(1, Math.max(0, v));
+        }
+
+        function fondu(de, vers, fini) {
+            clearInterval(minuterie);
+            const debut = performance.now();
+            reglerVolume(de);
+            minuterie = setInterval(() => {
+                const k = Math.min(1, (performance.now() - debut) / FONDU_MS);
+                reglerVolume(de + (vers - de) * k);
+                if (k >= 1) { clearInterval(minuterie); if (fini) fini(); }
+            }, 60);
+        }
+
+        function afficherEtat() {
+            const joue = voulue && !audio.paused;
+            bouton.classList.toggle("joue", joue);
+            bouton.classList.toggle("coupe", !joue);
+            bouton.setAttribute("aria-pressed", String(joue));
+            bouton.setAttribute("aria-label", joue ? "Couper la musique" : "Mettre la musique");
+            bouton.title = joue ? "Couper la musique" : "Mettre la musique";
+        }
+
+        function lancer() {
+            voulue = true;
+            reglerVolume(0);
+            // le fondu démarre tout de suite : le volume reste à 0 tant que le son n'a pas commencé
+            fondu(0, VOLUME);
+            const promesse = audio.play();
+            if (promesse && promesse.catch) {
+                promesse.catch(() => { voulue = false; clearInterval(minuterie); afficherEtat(); });
+            }
+            afficherEtat();
+        }
+
+        function couper() {
+            voulue = false;
+            fondu(audio.volume > 0 ? (volumeReglable ? audio.volume : VOLUME) : VOLUME, 0, () => audio.pause());
+            afficherEtat();
+        }
+
+        bouton.addEventListener("click", () => { if (voulue && !audio.paused) couper(); else lancer(); });
+        audio.addEventListener("pause", afficherEtat);
+        audio.addEventListener("play", afficherEtat);
+
+        // pas de musique dans un onglet en arrière-plan
+        let etaitEnLecture = false;
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) { etaitEnLecture = voulue && !audio.paused; if (etaitEnLecture) audio.pause(); }
+            else if (etaitEnLecture && voulue) { audio.play().catch(() => {}); }
+        });
+
+        // écran d'accueil
+        function entrer(avecSon) {
+            document.body.classList.remove("intro-ouverte");
+            bouton.hidden = false;
+            if (avecSon) lancer(); else afficherEtat();
+            if (intro) {
+                intro.classList.add("sortie");
+                setTimeout(() => intro.remove(), 600);
+            }
+        }
+
+        if (intro) {
+            document.body.classList.add("intro-ouverte");
+            $("#intro-son").addEventListener("click", () => entrer(true));
+            $("#intro-muet").addEventListener("click", () => entrer(false));
+            $("#intro-son").focus({ preventScroll: true });
+        } else {
+            entrer(false);
+        }
+    }
+
     construirePage();
     suivreSection();
     visionneuse();
+    musique();
 })();

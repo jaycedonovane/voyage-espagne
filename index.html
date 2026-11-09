@@ -9,8 +9,10 @@
     <meta property="og:description" content="Barcelone, Lloret de Mar, plages, ruelles et bonne table : 75 photos du 5 au 9 novembre 2026.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/img/full/espagne-031.jpg">
-    <meta name="theme-color" content="#1f6fc0">
+    <meta name="theme-color" content="#ffc93c">
+    <link rel="preload" href="assets/fonts/PermanentMarker.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/style.css">
+    <noscript><style>#intro { display: none !important; }</style></noscript>
     <script src="js/photos.js" defer></script>
     <script src="js/jours.js" defer></script>
     <script src="js/main.js" defer></script>
@@ -18,15 +20,33 @@
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
 
+<!-- Écran d'accueil : le son ne peut démarrer qu'après un clic (règle des navigateurs) -->
+<div id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-titre">
+    <div class="intro-carte">
+        <div class="soleil" aria-hidden="true"></div>
+        <h2 id="intro-titre">&iexcl;Hola Espa&ntilde;a!</h2>
+        <p>Cinq jours, 75 photos, un peu de soleil et de la musique.</p>
+        <button type="button" id="intro-son" class="gros-bouton">&#9834; Entrer avec la musique</button>
+        <button type="button" id="intro-muet" class="lien-bouton">Entrer sans le son</button>
+    </div>
+</div>
+
 <div id="page">
 
     <header id="entete">
         <div class="entete-texte">
-            <h1>Espagne <span>2026</span></h1>
-            <p>Carnet de voyage &middot; du 5 au 9 novembre</p>
+            <h1>&iexcl;Hola <span>Espa&ntilde;a</span>!</h1>
+            <p>Carnet de voyage &middot; du 5 au 9 novembre 2026</p>
         </div>
-        <div class="badge" aria-hidden="true"><span>Nouveau&nbsp;!</span></div>
+        <div class="autocollant" aria-hidden="true"><b>5</b><span>jours</span></div>
     </header>
+
+    <div class="ruban" aria-hidden="true">
+        <div class="ruban-piste">
+            <span>&iexcl;HOLA! &#9733; BARCELONE &#9733; LLORET DE MAR &#9733; SOLEIL &#9733; PLAGE &#9733; BONNE TABLE &#9733; </span>
+            <span>&iexcl;HOLA! &#9733; BARCELONE &#9733; LLORET DE MAR &#9733; SOLEIL &#9733; PLAGE &#9733; BONNE TABLE &#9733; </span>
+        </div>
+    </div>
 
     <nav id="menu" aria-label="Navigation principale">
         <ul id="menu-liste">
@@ -38,7 +58,7 @@
         <main id="contenu">
             <section id="accueil" class="accueil">
                 <h2>Bienvenue dans mon carnet de voyage</h2>
-                <p>Cinq jours en Espagne : l'arrivée à Barcelone, les premières lueurs sur Lloret de Mar, de bons repas et une dernière balade de nuit. Clique sur une photo pour la voir en grand, puis utilise les flèches du clavier ou fais glisser au doigt pour passer à la suivante.</p>
+                <p>Cinq jours en Espagne : l'arriv&eacute;e &agrave; Barcelone, les premi&egrave;res lueurs sur Lloret de Mar, de bons repas et une derni&egrave;re balade de nuit. Clique sur une photo pour la voir en grand, puis utilise les fl&egrave;ches du clavier ou fais glisser au doigt pour passer &agrave; la suivante.</p>
             </section>
             <div id="jours"></div>
             <noscript><p class="avertissement">Ce site a besoin de JavaScript pour afficher les photos.</p></noscript>
@@ -49,16 +69,16 @@
                 <h3>Le voyage</h3>
                 <dl class="infos">
                     <dt>Dates</dt><dd>5 au 9 novembre 2026</dd>
-                    <dt>Étapes</dt><dd>Barcelone &amp; Lloret de Mar</dd>
+                    <dt>&Eacute;tapes</dt><dd>Barcelone &amp; Lloret de Mar</dd>
                     <dt>Photos</dt><dd id="nb-photos">75</dd>
                 </dl>
             </section>
             <section class="boite">
-                <h3>Les étapes</h3>
+                <h3>Les &eacute;tapes</h3>
                 <ol id="liste-etapes" class="etapes"></ol>
             </section>
             <section class="boite">
-                <h3>Mots-clés</h3>
+                <h3>Mots-cl&eacute;s</h3>
                 <p id="nuage" class="nuage"></p>
             </section>
         </aside>
@@ -67,22 +87,32 @@
     <footer id="pied">
         <div class="pied-colonnes">
             <div>
-                <h4>À propos</h4>
+                <h4>&Agrave; propos</h4>
                 <p>Un carnet de voyage fait main, en HTML, CSS et JavaScript, sans aucun framework.</p>
             </div>
             <div>
-                <h4>Les étapes</h4>
+                <h4>Les &eacute;tapes</h4>
                 <ul id="pied-etapes"></ul>
             </div>
             <div>
                 <h4>Le plus</h4>
-                <p>Les photos sont allégées pour charger vite, même sur téléphone.</p>
+                <p>Les photos sont all&eacute;g&eacute;es pour charger vite, m&ecirc;me sur t&eacute;l&eacute;phone.</p>
             </div>
         </div>
-        <p class="pied-bas">&copy; 2026 &middot; Espagne, carnet de voyage &middot; <a href="#accueil">Haut de page &uarr;</a></p>
+        <p class="pied-bas">&iexcl;Hasta luego! &middot; &copy; 2026 &middot; <a href="#accueil">Haut de page &uarr;</a></p>
     </footer>
 
 </div>
+
+<!-- Bouton musique (apparaît quand on entre dans le site) -->
+<button type="button" id="bouton-musique" hidden aria-pressed="false" aria-label="Mettre la musique" title="Musique">
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
+        <path d="M3 9v6h4l5 4V5L7 9H3z" fill="currentColor"/>
+        <path class="ondes" d="M15.5 8.5a5 5 0 010 7M18.2 6a8.6 8.6 0 010 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path class="barre" d="M4 4l16 16" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+    </svg>
+</button>
+<audio id="musique" src="assets/audio/musique-espagne.mp3" loop preload="none"></audio>
 
 <!-- Visionneuse de photos (zoom plein écran) -->
 <div id="visionneuse" class="cachee" role="dialog" aria-modal="true" aria-label="Visionneuse de photos">
