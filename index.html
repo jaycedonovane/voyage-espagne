@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Espagne 2026 - Carnet de voyage</title>
+    <meta name="description" content="Carnet de voyage en Espagne, du 5 au 9 novembre 2026 : Barcelone, Lloret de Mar, plages, ruelles et bonne table en 75 photos.">
+    <meta property="og:title" content="Espagne 2026 - Carnet de voyage">
+    <meta property="og:description" content="Barcelone, Lloret de Mar, plages, ruelles et bonne table : 75 photos du 5 au 9 novembre 2026.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/img/full/espagne-031.jpg">
+    <meta name="theme-color" content="#1f6fc0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/photos.js" defer></script>
+    <script src="js/jours.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<div id="page">
+
+    <header id="entete">
+        <div class="entete-texte">
+            <h1>Espagne <span>2026</span></h1>
+            <p>Carnet de voyage &middot; du 5 au 9 novembre</p>
+        </div>
+        <div class="badge" aria-hidden="true"><span>Nouveau&nbsp;!</span></div>
+    </header>
+
+    <nav id="menu" aria-label="Navigation principale">
+        <ul id="menu-liste">
+            <li><a href="#accueil" class="actif">Accueil</a></li>
+        </ul>
+    </nav>
+
+    <div id="corps">
+        <main id="contenu">
+            <section id="accueil" class="accueil">
+                <h2>Bienvenue dans mon carnet de voyage</h2>
+                <p>Cinq jours en Espagne : l'arrivée à Barcelone, les premières lueurs sur Lloret de Mar, de bons repas et une dernière balade de nuit. Clique sur une photo pour la voir en grand, puis utilise les flèches du clavier ou fais glisser au doigt pour passer à la suivante.</p>
+            </section>
+            <div id="jours"></div>
+            <noscript><p class="avertissement">Ce site a besoin de JavaScript pour afficher les photos.</p></noscript>
+        </main>
+
+        <aside id="lateral" aria-label="Informations">
+            <section class="boite">
+                <h3>Le voyage</h3>
+                <dl class="infos">
+                    <dt>Dates</dt><dd>5 au 9 novembre 2026</dd>
+                    <dt>Étapes</dt><dd>Barcelone &amp; Lloret de Mar</dd>
+                    <dt>Photos</dt><dd id="nb-photos">75</dd>
+                </dl>
+            </section>
+            <section class="boite">
+                <h3>Les étapes</h3>
+                <ol id="liste-etapes" class="etapes"></ol>
+            </section>
+            <section class="boite">
+                <h3>Mots-clés</h3>
+                <p id="nuage" class="nuage"></p>
+            </section>
+        </aside>
+    </div>
+
+    <footer id="pied">
+        <div class="pied-colonnes">
+            <div>
+                <h4>À propos</h4>
+                <p>Un carnet de voyage fait main, en HTML, CSS et JavaScript, sans aucun framework.</p>
+            </div>
+            <div>
+                <h4>Les étapes</h4>
+                <ul id="pied-etapes"></ul>
+            </div>
+            <div>
+                <h4>Le plus</h4>
+                <p>Les photos sont allégées pour charger vite, même sur téléphone.</p>
+            </div>
+        </div>
+        <p class="pied-bas">&copy; 2026 &middot; Espagne, carnet de voyage &middot; <a href="#accueil">Haut de page &uarr;</a></p>
+    </footer>
+
+</div>
+
+<!-- Visionneuse de photos (zoom plein écran) -->
+<div id="visionneuse" class="cachee" role="dialog" aria-modal="true" aria-label="Visionneuse de photos">
+    <button type="button" class="vis-fermer" aria-label="Fermer">&times;</button>
+    <button type="button" class="vis-nav vis-prec" aria-label="Photo précédente">&#10094;</button>
+    <button type="button" class="vis-nav vis-suiv" aria-label="Photo suivante">&#10095;</button>
+    <figure class="vis-cadre">
+        <img id="vis-img" alt="" draggable="false">
+        <figcaption><span id="vis-legende"></span><span id="vis-compteur" aria-live="polite"></span></figcaption>
+    </figure>
+</div>
+
+<!-- Calque des confettis -->
+<canvas id="confettis" aria-hidden="true"></canvas>
+
+</body>
+</html>

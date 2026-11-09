@@ -1,0 +1,7 @@
+# Photos originales (360 Mo) : restent sur le PC, jamais envoyées sur GitHub
+_sources/
+
+# Divers
+Thumbs.db
+desktop.ini
+.DS_Store
