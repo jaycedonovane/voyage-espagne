@@ -2,7 +2,7 @@
 
 Site de voyage en HTML, CSS et JavaScript, sans framework, dans un style "carnet scrapbook" fun (polaroids scotchés, post-it, autocollants, ticker)
 avec visionneuse plein écran façon Lightbox.
-75 photos, du 5 au 9 novembre 2026 (27 photos ecartees, leurs originaux restent dans `_sources`).
+74 photos, du 5 au 9 novembre 2026 (28 photos ecartees, leurs originaux restent dans `_sources`).
 
 ## Fonctionnement des photos
 
@@ -29,7 +29,9 @@ Les effets de survol ne s'appliquent qu'avec une souris, et `prefers-reduced-mot
 
 ## Coups de coeur et en-tete
 
-Les 6 coups de coeur sont listes dans FAVORIS (js/jours.js) : le premier s'affiche en grand, tous portent une etoile dans les galeries. L'image d'en-tete est la photo 31 (css/style.css, ligne #entete).
+Les 5 coups de coeur sont listes dans FAVORIS (js/jours.js) : le premier s'affiche en grand, tous portent une etoile dans les galeries. L'en-tete est fait de trois panneaux penches (css/style.css, `.entete-bandes`) : photo 45 a gauche, logo La Clave Premium Edition (png transparent) au centre, photo de Yoyo Flow et Yenifer Lavine a droite (images dans `assets/img/entete/`). La photo 46 n est plus dans les galeries.
+
+A la fin de la section La Clave, le bouton "Plus de videos YoyoFlow ici !" ouvre la video YouTube MwXh3lP3_Xc dans un nouvel onglet (lien dans `index.html`, classe `clave-youtube`).
 
 ## Ouvrir le site
 
@@ -41,10 +43,10 @@ Double-clic sur `index.html`. Aucun serveur nécessaire.
 - `css/style.css` : tout le style
 - `js/main.js` : construit la page, le menu, le nuage de mots-clés et la visionneuse
 - `js/jours.js` : **les textes** (titres, descriptions, groupes de photos, mots-clés) : c'est ici qu'on corrige
-- `js/photos.js` : liste des 75 photos (générée)
+- `js/photos.js` : liste des 74 photos (générée)
 - `assets/img/full/` : photos web (1800 px)
 - `assets/img/thumb/` : miniatures (520 px)
-- `assets/img/medium/` : versions 900 px des 6 coups de coeur
+- `assets/img/medium/` : versions 900 px des coups de coeur
 - `assets/video/` : les 3 vidéos du festival et leurs images d'aperçu
 - `assets/audio/` : les 2 musiques d'ambiance
 - `assets/fonts/` : polices Fredoka, Permanent Marker et Caveat (licence OFL, hébergées dans le projet)

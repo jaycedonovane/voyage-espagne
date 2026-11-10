@@ -28,7 +28,6 @@ const PHOTOS = [
   { id: "espagne-043", jour: "2026-11-06", heure: "08:30", w: 1350, h: 1800 },
   { id: "espagne-044", jour: "2026-11-06", heure: "08:43", w: 1350, h: 1800 },
   { id: "espagne-045", jour: "2026-11-06", heure: "08:43", w: 1350, h: 1800 },
-  { id: "espagne-046", jour: "2026-11-06", heure: "08:58", w: 1800, h: 1350 },
   { id: "espagne-048", jour: "2026-11-06", heure: "09:00", w: 1800, h: 1350 },
   { id: "espagne-049", jour: "2026-11-06", heure: "14:30", w: 1350, h: 1800 },
   { id: "espagne-050", jour: "2026-11-06", heure: "14:44", w: 1800, h: 1350 },

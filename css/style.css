@@ -145,12 +145,44 @@ button { font-family: inherit; touch-action: manipulation; }
    ========================================================== */
 #entete {
     position: relative;
-    height: clamp(190px, 56vw, 280px);
+    height: clamp(250px, 72vw, 340px);
     overflow: hidden;
-    background: var(--ciel) url("../assets/img/full/espagne-031.jpg") center 32% / cover no-repeat;
+    background: var(--soleil);
 }
+/* trois panneaux penchés : photo 45, affiche La Clave, photo 46 ; le fond jaune fait le séparateur */
+.entete-bandes {
+    --pente: clamp(22px, 6vw, 54px);
+    --trait: clamp(7px, 1.6vw, 12px);
+    position: absolute; inset: 0; display: flex;
+}
+.bande {
+    flex: 1 1 0; min-width: 0;
+    background: var(--ciel) center / cover no-repeat;
+}
+.bande + .bande { margin-left: calc(var(--trait) - var(--pente)); }
+.bande-gauche {
+    flex-grow: 1.35;
+    background-image: url("../assets/img/entete/gauche.jpg"); background-position: center 58%;
+    clip-path: polygon(0 0, 100% 0, calc(100% - var(--pente)) 100%, 0 100%);
+}
+.bande-logo {
+    position: relative; flex-grow: 1;
+    background-color: #1c1409;
+    clip-path: polygon(var(--pente) 0, 100% 0, calc(100% - var(--pente)) 100%, 0 100%);
+}
+.bande-logo::before, .bande-logo::after { content: ""; position: absolute; inset: 0; }
+.bande-logo::before { background: radial-gradient(circle at 50% 35%, #d9a43a, #7a5217 45%, #1c1409 100%); }
+.bande-logo::after { background: url("../assets/img/entete/clave-logo.png") center / contain no-repeat; left: 30%; right: var(--pente); top: 14px; bottom: 34px; }
+@media (max-width: 699px) { .bande-logo::after { left: var(--pente); top: 10px; bottom: 46%; } }
+.bande-droite {
+    flex-grow: 1.2;
+    /* zoom calé à droite : le danseur est poussé vers la gauche, loin de l'autocollant */
+    background-image: url("../assets/img/entete/droite.jpg"); background-size: auto 150%; background-position: 100% 38%;
+    clip-path: polygon(var(--pente) 0, 100% 0, 100% 100%, 0 100%);
+}
+@media (max-width: 699px) { .bande-droite { background-size: auto 112%; background-position: 86% 40%; } }
 #entete::before { /* assombrit le bas pour que le titre se lise bien */
-    content: ""; position: absolute; inset: 35% 0 0 0;
+    content: ""; position: absolute; inset: 35% 0 0 0; z-index: 1; pointer-events: none;
     background: linear-gradient(transparent, rgba(29, 43, 83, .75));
 }
 #entete::after { /* bas du bandeau en vague */
@@ -323,6 +355,28 @@ h2 { background: linear-gradient(transparent 62%, rgba(255, 201, 60, .85) 62%); 
     background: #000; border-radius: 6px; object-fit: contain;
 }
 .clave-videos figcaption { padding: 8px 6px 10px; font-size: .92rem; font-weight: 700; color: var(--encre); text-align: left; }
+
+/* lien vers la chaîne YouTube */
+.clave-youtube {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    width: fit-content; max-width: 100%; margin: 28px auto 4px; padding: 10px 22px 10px 12px;
+    text-decoration: none; color: var(--encre); background: #fff;
+    border: 4px solid var(--encre); border-radius: 999px;
+    box-shadow: 5px 5px 0 var(--encre);
+    transform: rotate(-1.2deg);
+    transition: transform .12s, box-shadow .12s;
+}
+.clave-youtube:hover { color: var(--encre); transform: rotate(0deg) scale(1.04); box-shadow: 7px 7px 0 var(--encre); }
+.clave-youtube:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--encre); }
+.clave-youtube:focus-visible { outline: 4px solid var(--ciel); outline-offset: 4px; }
+.yt-play {
+    flex: 0 0 auto; width: 52px; height: 52px; padding-left: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; line-height: 1; color: #fff; background: #e62117;
+    border: 3px solid var(--encre); border-radius: 50%;
+}
+.yt-texte { font: 400 clamp(1.15rem, 5vw, 1.6rem)/1.15 var(--titre); text-align: left; }
+.yt-texte small { display: block; margin-top: 2px; font: 600 .85rem/1.2 var(--corps); color: var(--gris); }
 
 .intro-carte .intro-slogan { margin: 0 0 8px; font: 600 clamp(1.6rem, 7.5vw, 2.1rem)/1.1 var(--main); color: var(--tomate); }
 

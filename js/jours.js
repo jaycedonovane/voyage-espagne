@@ -74,7 +74,6 @@ const FAVORIS = [
   { n: 45, titre: "Un matin de rêve sur la plage" },
   { n: 49, titre: "Le château sur son rocher" },
   { n: 51, titre: "Les vagues contre les rochers" },
-  { n: 46, titre: "Vue sur la baie" },
   { n: 60, titre: "Le chemin dans la nature" },
   { n: 81, titre: "Au bar du Panxos" }
 ];
